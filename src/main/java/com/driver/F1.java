@@ -3,7 +3,7 @@ package com.driver;
 public class F1 extends Car {
 
     public F1(String name, boolean isManual) {
-        super(name, 4, 0, 6, isManual, "F1", 1); // Use arbitrary values for wheels, doors, seats
+        super(name, 4, 1, 6, isManual, "Race Car", 1);
     }
 
     public void accelerate(int rate) {
@@ -11,8 +11,8 @@ public class F1 extends Car {
 
         if (newSpeed == 0) {
             stop();
-            changeGear(1); // Set gear to 1 if speed is 0
-        } else if (newSpeed >= 1 && newSpeed <= 50) {
+            changeGear(1);
+        } else if (newSpeed > 0 && newSpeed <= 50) {
             changeGear(1);
         } else if (newSpeed <= 100) {
             changeGear(2);
@@ -29,5 +29,16 @@ public class F1 extends Car {
         if (newSpeed > 0) {
             changeSpeed(newSpeed, getCurrentDirection());
         }
+    }
+
+    // Override getCurrentGear if needed (if F1-specific)
+
+    // Constructor and other methods...
+ public void changeGear(int gear) {
+        super.changeGear(gear);
+    }
+
+    public void changeSpeed(int speed, int direction) {
+        super.changeSpeed(speed, direction);
     }
 }
